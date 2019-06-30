@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gohello
+  labels:
+    app: gohello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gohello
+  template:
+    metadata:
+      labels:
+        app: gohello
+    spec:
+      containers:
+      - name: gohello
+        image: localhost:5000/gohello:latest
+        resources:
+          limits:
+            memory: "100Mi"
+            cpu: "100m"
